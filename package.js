@@ -1,8 +1,8 @@
 Package.describe({
-  name: "referrals",
+  name: "elie:referrals",
   summary: "Referral tracking system",
-  version: '0.0.1',
-  // git: "https://github.com/elie222/meteor-referrals.git"
+  version: '0.0.2',
+  git: "https://github.com/elie222/meteor-referrals.git"
 });
 
 Package.onUse(function (api) {
