@@ -1,0 +1,12 @@
+<template name="addReferrer">
+  <div class="container">
+    <div class="page-header">
+      <h1>Add Referrer</h1>
+      {{> addReferrerForm}}
+    </div>
+  </div>
+</template>
+
+<template name="addReferrerForm">
+  {{> quickForm collection="Referrers" id="addReferrerForm" type="method" meteormethod="addReferrer"}}
+</template>

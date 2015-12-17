@@ -1,0 +1,32 @@
+<template name="referrersTable">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>URL</th>
+        <th class="text-center">Users Signed Up</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each referrers}}
+        {{> referrersTableRow}}
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="referrersTableRow">
+  <tr>
+    <td>{{code}}</td>
+    <td>{{name}}</td>
+    <td>{{url}}</td>
+    <td class="text-center">
+      {{#if Template.subscriptionsReady}}
+        {{usersSignedUp}}
+      {{else}}
+        Loading...
+      {{/if}}
+    </td>
+  </tr>
+</template>
