@@ -1,7 +1,7 @@
 Package.describe({
   name: "elie:referrals",
   summary: "Referral tracking system",
-  version: '0.0.3',
+  version: '0.0.4',
   git: "https://github.com/elie222/meteor-referrals.git"
 });
 
@@ -19,7 +19,7 @@ Package.onUse(function (api) {
   ], ['client']);
 
   var communityPackages = [
-    'iron:router', 
+    'iron:router@1.0.12', 
     'tmeasday:publish-counts@0.4.0',
     'aldeed:simple-schema@1.4.0',
     'aldeed:collection2@2.6.0',
