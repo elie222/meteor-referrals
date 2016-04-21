@@ -18,11 +18,13 @@ Meteor.publish('referrers', function () {
   }
 });
 
-Meteor.publish('referralsCount', function(referrerId) {
+Meteor.publish('referralsCount', function (referrerId) {
   check(referrerId, String);
 
   if (Roles.userIsInRole(this.userId, ['admin'])) {
-    Counts.publish(this, 'referrals-count-' + referrerId, Referrals.find({referrerId: referrerId}), {nonReactive: true});
+    const name = `referrals-count-${referrerId}`;
+
+    Counts.publish(this, name, Referrals.find({ referrerId }), { nonReactive: true });
   } else {
     this.ready();
     return;

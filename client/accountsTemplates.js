@@ -3,6 +3,6 @@
 //   type: 'hidden'
 // });
 
-Referrer.referralsPreSignUpHook = function (password, options) {
+Referrer.referralsPreSignUpHook = (password, options) => {
   options.referrerCode = Referrer._referrerCode;
-}
+};

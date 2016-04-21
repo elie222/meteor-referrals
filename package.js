@@ -1,7 +1,7 @@
 Package.describe({
   name: "elie:referrals",
   summary: "Referral tracking system",
-  version: '0.0.4',
+  version: '0.0.5',
   git: "https://github.com/elie222/meteor-referrals.git"
 });
 
@@ -26,7 +26,8 @@ Package.onUse(function (api) {
     'aldeed:autoform@4.0.0 || 5.0.0',
     'zimme:collection-timestampable@1.0.9',
     'alanning:roles@1.2.14',
-    'useraccounts:core@1.12.4'
+    'useraccounts:core@1.12.4',
+    'ecmascript@0.1.6'
   ];
 
   api.use(communityPackages, ['client', 'server']);

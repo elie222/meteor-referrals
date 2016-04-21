@@ -1,10 +1,10 @@
-Referrer._addReferral = function (userId, referrerCode) {
-  var referrer = Referrers.findOne({code: referrerCode});
+Referrer._addReferral = (userId, referrerCode) => {
+  const referrer = Referrers.findOne({code: referrerCode});
 
   if (referrer) {
     Referrals.insert({
       referrerId: referrer._id,
-      userId: userId
+      userId
     });
   }
 };
