@@ -34,3 +34,7 @@ Meteor.publish('referralsCount', function (referrerId) {
 Meteor.publish('userWithReferralCount', function () {
   return Meteor.users.find(this.userId, { fields: {usersReferred: 1} });
 });
+
+Meteor.publish(null, function () {
+  return Meteor.users.find(this.userId, { fields: {askReferrer: 1} });
+});

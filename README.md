@@ -20,8 +20,29 @@ Accounts.onCreateUser(function (options, user) {
 
   user.referrerCode = options.referrerCode;
 
+  // if you'd like to track social login
+  if (user.services.facebook || user.services.google) {
+    user.askReferrer = true;
+  }
+
   return user;
 });
+```
+
+Add the following code somewhere on the client if you want to track social logins:
+(would love to find a better social to this)
+```
+Tracker.autorun(() => {
+  const user = Meteor.user();
+
+  if (!user || !user.askReferrer)
+    return;
+
+  const referrerCode = Referrer._referrerCode;
+
+  Meteor.call('setReferrer', { referrerCode });
+});
+
 ```
 
 And you need the following in your AccountsTemplates.configuration:

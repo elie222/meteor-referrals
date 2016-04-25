@@ -26,3 +26,26 @@ Referrer._addReferral = (userId, referrerCode) => {
 };
 
 Meteor.users.after.insert( (userId, doc) => Referrer._addReferral(doc._id, doc.referrerCode) );
+
+Meteor.methods({
+  setReferrer({ referrerCode }) {
+    console.log('setReferrer', referrerCode);
+    // referrerCode shouldn't really be null, but if it is we'll unset askReferrer anyway
+    check(referrerCode, Match.Optional(String));
+
+    if (referrerCode) {
+      const user = Meteor.users.findOne(this.userId, {fields: {askReferrer: 1}});
+
+      if (!user || !user.askReferrer)
+        return;
+
+      Referrer._addReferral(this.userId, referrerCode);
+    }
+
+    Meteor.users.update(this.userId, {
+      $unset: {
+        askReferrer: 1
+      }
+    }, () => {});
+  }
+});
