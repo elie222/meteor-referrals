@@ -1,4 +1,8 @@
-Adds a refferal system to an app.
+# Referrals
+
+Adds a refferal system to a Meteor app.
+
+## Documentation
 
 This package works with `Iron Router`.
 
