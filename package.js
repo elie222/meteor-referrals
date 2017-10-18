@@ -1,8 +1,8 @@
 Package.describe({
-  name: "elie:referrals",
-  summary: "Referral tracking system",
+  name: 'elie:referrals',
+  summary: 'Referral tracking system',
   version: '0.2.0',
-  git: "https://github.com/elie222/meteor-referrals.git"
+  git: 'https://github.com/elie222/meteor-referrals.git',
 });
 
 Package.onUse(function (api) {
@@ -18,8 +18,8 @@ Package.onUse(function (api) {
     // 'reactive-var',
   ], ['client']);
 
-  var communityPackages = [
-    'iron:router@1.0.12', 
+  const communityPackages = [
+    'iron:router@1.0.12',
     'tmeasday:publish-counts@0.4.0',
     'aldeed:simple-schema@1.4.0',
     'aldeed:collection2@2.6.0',
@@ -27,7 +27,7 @@ Package.onUse(function (api) {
     'zimme:collection-timestampable@1.0.9',
     'alanning:roles@1.2.14',
     'useraccounts:core@1.12.4',
-    'ecmascript@0.1.6'
+    'ecmascript@0.1.6',
   ];
 
   api.use(communityPackages, ['client', 'server']);
@@ -39,7 +39,7 @@ Package.onUse(function (api) {
     'lib/referrals.js',
     'lib/referrers.js',
     'lib/router.js',
-    'lib/users.js'
+    'lib/users.js',
   ], ['client', 'server']);
 
   api.addFiles([
@@ -53,14 +53,14 @@ Package.onUse(function (api) {
 
   api.addFiles([
     'server/publications.js',
-    'server/addReferral.js'
+    'server/addReferral.js',
   ], ['server']);
 
   // ---------------------------------- 3. Variables to export ----------------------------------
 
-  api.export("Referrals", ['client', 'server']);
-  api.export("Referrers", ['client', 'server']);
-  api.export("Referrer", ['client', 'server']);
+  api.export('Referrals', ['client', 'server']);
+  api.export('Referrers', ['client', 'server']);
+  api.export('Referrer', ['client', 'server']);
 
   api.imply(communityPackages);
 });

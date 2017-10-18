@@ -1,5 +1,5 @@
 Template.referrersTable.helpers({
-  referrers: () => Referrers.find()
+  referrers: () => Referrers.find(),
 });
 
 Template.referrersTableRow.onCreated(function () {
@@ -11,5 +11,5 @@ Template.referrersTableRow.helpers({
     const count = Counts.get(`referrals-count-${this._id}`);
 
     return count;
-  }
+  },
 });
