@@ -54,6 +54,8 @@ Package.onUse(function (api) {
   api.addFiles([
     'server/publications.js',
     'server/addReferral.js',
+    'server/addReferrer.js',
+    'server/trackVisit.js',
   ], ['server']);
 
   // ---------------------------------- 3. Variables to export ----------------------------------

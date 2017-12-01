@@ -1,6 +1,6 @@
 # Referrals
 
-Adds a refferal system to a Meteor app.
+Adds a referral system to a Meteor app.
 
 ## Documentation
 
