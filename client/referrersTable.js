@@ -1,18 +1,20 @@
 const moneyToString = amount => {
+  const currency = Referrer.currency;
+
   if (!amount)
-    return '£0';
+    return `${currency}0`;
 
   const poundAmount = amount / 100;
 
   if (poundAmount % 1 === 0) {
     return poundAmount > 0 ?
-      `£${poundAmount}` :
-      `-£${-poundAmount}`;
+      `${currency}${poundAmount}` :
+      `-${currency}${-poundAmount}`;
   }
 
   return poundAmount > 0 ?
-    `£${poundAmount.toFixed(2)}` :
-    `-£${-poundAmount.toFixed(2)}`;
+    `${currency}${poundAmount.toFixed(2)}` :
+    `-${currency}${-poundAmount.toFixed(2)}`;
 };
 
 Template.referrersTable.helpers({

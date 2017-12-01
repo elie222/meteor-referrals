@@ -63,3 +63,10 @@ AccountsTemplates.configure({
 This package provides routes, publications, and templates for admin stuff. Admin is done using the `alanning:roles` package.
 
 You can change the query field from `r` to something else by changing `Referrer._referrerQuery`. In the future we'll hopefully have a cleaner way of doing that.
+
+The default for the currency symbol is `£`. You can change this to dollars by setting `Referrer.currency = '$'` for example.
+
+## Changelog
+
+* Commission (%) / CPA added.
+* Click tracking added.
