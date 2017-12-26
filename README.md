@@ -13,7 +13,7 @@ Referrers are stored in the `Referrers` collection which contains the following 
 - `name` (optional)
 - `url` (optional)
 
-This package also adds a referrerCode field to Meteor.users.
+This package also adds a `referrerCode` field to Meteor.users.
 
 To make this work, add the following code to `Accounts.onCreateUser` on the server (or add the relevant code if you've already defined an `Accounts.onCreateUser`:
 ```
@@ -23,6 +23,13 @@ Accounts.onCreateUser(function (options, user) {
     user.profile = options.profile;
 
   user.referrerCode = options.referrerCode;
+  user.referrerClickId = options.referrerClickId;
+  user.referrerSubId = options.referrerSubId;
+  user.utmSource = options.utmSource;
+  user.utmMedium = options.utmMedium;
+  user.utmCampaign = options.utmCampaign;
+  user.utmTerm = options.utmTerm;
+  user.utmContent = options.utmContent;
 
   // if you'd like to track social login
   if (user.services.facebook || user.services.google) {
@@ -43,20 +50,35 @@ Tracker.autorun(() => {
     return;
 
   const referrerCode = Referrer._referrerCode;
+  const referrerClickId = Referrer.clickId;
+  const referrerSubId = Referrer.subId;
+  const utmSource = Referrer.utmSource;
+  const utmMedium = Referrer.utmMedium;
+  const utmCampaign = Referrer.utmCampaign;
+  const utmTerm = Referrer.utmTerm;
+  const utmContent = Referrer.utmContent;
 
-  Meteor.call('setReferrer', { referrerCode });
+  Meteor.call('setReferrer', {
+    referrerCode,
+    referrerClickId,
+    referrerSubId,
+    utmSource,
+    utmMedium,
+    utmCampaign,
+    utmTerm,
+    utmContent,
+  });
 });
-
 ```
 
 And you need the following in your AccountsTemplates.configuration:
 ```
 AccountsTemplates.configure({
-    //...
-    preSignUpHook: function (password, options) {
-        Referrer.referralsPreSignUpHook(password, options);
-    },
-    //...
+  //...
+  preSignUpHook: function (password, options) {
+    Referrer.referralsPreSignUpHook(password, options);
+  },
+  //...
 });
 ```
 
@@ -70,3 +92,5 @@ The default for the currency symbol is `£`. You can change this to dollars by s
 
 * Commission (%) / CPA added.
 * Click tracking added.
+* Added UTM tracking.
+* Added postback option.
